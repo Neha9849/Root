@@ -1,0 +1,52 @@
+<%- include('partials/Navbar.ejs',{authenticated:authenticated}) %>
+<link rel="stylesheet" href="../css/style.css">
+    <style>
+       .writeWrapper{
+           width:100vw;
+           min-height:90vh;
+           display:flex;
+           align-items:center;
+       }
+       .write{
+           margin:10px auto;
+           width:800px;
+           max-width:100vw;
+       }
+       .form-control:focus{
+           box-shadow: none !important;
+        
+           
+       }
+       
+
+
+    </style>
+    <div class="writeWrapper mt-5">
+        <div class="write">
+            <form action="/blog/write/post" method="post" class="mx-1">
+                <div class="form-group my-3">
+                    <label for="title"><b class="heading">Title</b></label>
+                    <input type="text" id="title" class="form-control" name="title"  >
+                  </div>
+                  <div class="form-group my-3">
+                    <label for="desc"><b class="heading">Short Description</b></label>
+                    <input type="text" class="form-control" id="desc" name="desc" >
+                  </div>
+                  <div class="form-group my-3 ">
+                    <label for="editor"><b class="heading">Body</b></label>
+                    <textarea  id="editor" rows="10" name="body" placeholder="Start typing here...
+                    (To upload images copy paste the image)"></textarea>
+                  </div>
+                  <button type="submit" class="main-Btn px-3 py-2">Submit</button>
+            </form>
+    
+        </div>
+        
+    </div>
+    <script src="https://cdn.ckeditor.com/ckeditor5/32.0.0/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+    .create( document.getElementById('editor'))
+    .then(console.log('ck editor created') )
+    .catch(err=>console.log(err) );
+    </script>

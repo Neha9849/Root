@@ -1,0 +1,70 @@
+<%- include('partials/Navbar.ejs',{authenticated:authenticated}) %>
+    <style>
+        .home .wrapper {
+            width: 100vw;
+            min-height: 100vh;
+        }
+
+        .home .first {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column; 
+
+        }
+
+        /* .home .second{
+     width:50%;
+     height:100vh;
+     display:flex;
+     align-items: center;
+     justify-content: center;
+     padding:30px;
+
+ }
+ .home img{
+    max-width:100%;
+    max-height:100%;
+    object-fit: contain;
+ } */
+        
+
+        .main-heading {
+            color: #da8181;
+        }
+
+        .buttons {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+    
+    </style>
+
+
+    <div class="home">
+        <div class="wrapper">
+            <div class="first p-5">
+                <h1 class=" text-center heading">Discover New Experiences in <br> Blogging World <br><span
+                        class="main-heading "> With Root!</span></h1>
+                <div class="buttons">
+                    <a href="/blog/write">
+                        <button class="main-Btn px-3 py-2"> <b>Get Started</b>
+                        </button>
+                    </a>
+                    <a href="/signup">
+                        <button class="main-Btn secondary-Btn px-3 py-2">
+                            <b> Signin</b>
+                        </button>
+                    </a>
+                   
+               
+                </div>
+            </div>
+            <!-- <div class="second">
+                <img src="images/home.png" class="img-responsive" />
+            </div> -->
+        </div>
+    </div>
