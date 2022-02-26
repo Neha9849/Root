@@ -4,7 +4,7 @@ const { ensureAuth } = require("../middleware");
 const Blog = require("../models/blog");
 const User = require("../models/user");
 const mongoose = require("mongoose");
-//write route
+//get write route
 router.get("/write", (req, res) => {
   if (req.isAuthenticated()) {
     res.render("write.ejs", { authenticated: true });
@@ -44,9 +44,24 @@ router.post("/write/post", async (req, res) => {
 
 //get each blog
 router.get("/:id", (req, res) => {
-  Blog.findById(req.params.id, (err, blog) => {
-    res.render("blog.ejs", { blog: blog });
-  });
+ 
+  Blog.findById(req.params.id).populate('author').then((blog)=>{
+    if(req.isAuthenticated()){
+      res.render("blog.ejs", { blog: blog ,authenticated: true });
+    }
+    else{
+      res.render("blog.ejs", { blog: blog ,authenticated: false});
+    }
+  }).catch(err=>console.log(err));
+  // (err, blog) => {
+  //   if(req.isAuthenticated()){
+  //     res.render("blog.ejs", { blog: blog ,authenticated: true });
+  //   }
+  //   else{
+  //     res.render("blog.ejs", { blog: blog ,authenticated: false});
+  //   }
+   
+  // }
 });
 
 module.exports = router;

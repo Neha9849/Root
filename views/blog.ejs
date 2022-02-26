@@ -1,0 +1,90 @@
+<link rel="stylesheet" href="../css/style.css">
+<%- include('partials/Navbar.ejs',{authenticated:authenticated}) %>
+    <style>
+        .singleBlog {
+            width: 100vw;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+        }
+
+        .singleBlog .wrapper {
+            width: 900px;
+            max-width: 98vw;
+            /* background-color: #4d70b8; */
+            margin-top: 100px;
+        }
+
+
+
+        .singleBlog .profileContainer {
+            display: flex;
+            align-items: center;
+            padding: 10px 5px;
+            font-family: 'Inter', sans-serif;
+        }
+        .singleBlog .profileContainer .img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 0 0 2px #6262936c;
+        }
+
+        .singleBlog .profileContainer .img img {
+            object-fit: contain;
+            width: 40px;
+            height: 40px;
+
+        }
+
+        .singleBlog .profileContainer h5 {
+            color: rgba(65, 62, 62, 0.699) !important;
+            text-decoration: none !important;
+        }
+        .singleBlog .heading{
+            font-family: 'Inter', sans-serif;
+        }
+        /* figure{
+            width:1000px !important;
+        } */
+        figure img{
+            max-width:900px !important;
+            width:100%;
+        }
+    </style>
+    <% var date = blog.createdAt;
+    var month = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"][date.getMonth()]
+    var year = date.getFullYear();
+    var Date= date.getDate();
+    date= `${Date}th ${month} ${year}`;
+    %>
+    <div class="singleBlog">
+        <div class="wrapper">
+           
+                <div class="profileContainer">
+                    <a href="/user/<%= blog.author._id %>">
+                    <div class="img">
+                        <img src="<%= blog.author.image %>" alt="<%= blog.author.fullName %>">
+
+                    </div>
+                </a>
+                    <div class="profileInfo">
+                        <h5 class="mx-2 my-0 heading ">
+                            <%= blog.author.fullName %>
+                        </h5>
+                       
+                    </div>
+                </div>
+            
+            <p class="text-secondary mx-2">
+                <%= date %> </p>
+            <h1 class="text-dark mx-2"><%= blog.title %></h1>
+            <h3 class=" text-secondary mx-2"><%= blog.shortDescription %></h3>
+            <div class="body mx-2">
+                <%- blog.body %>
+            </div>
+         
+        </div>
+    </div>

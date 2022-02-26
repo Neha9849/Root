@@ -16,7 +16,7 @@
 
     
 
-    a,
+    .blogContainer a,
     a:hover,
     a:focus,
     a:active {
@@ -58,7 +58,13 @@
  font-family: 'Inter', sans-serif;
     }
 </style>
-
+<% var date = blog.createdAt;
+var month = ["January", "February", "March", "April", "May", "June",
+"July", "August", "September", "October", "November", "December"][date.getMonth()]
+var year = date.getFullYear();
+var Date= date.getDate();
+date= `${Date}th ${month} ${year}`;
+%>
 <div class="blogContainer my-4 p-2">
     <a href="/user/<%= blog.author._id %>">
         <div class="profileContainer">
@@ -86,6 +92,7 @@
                 <%= blog.shortDescription %>
 
             </p>
+            <p class="text-secondary m-1">Created on <%= date %></p>
         </div>
     </a>
 

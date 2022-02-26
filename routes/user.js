@@ -13,8 +13,11 @@ router.get("/:id", (req, res) => {
         .then((blogs) => {
           console.log(blogs.length);
           if (id == req.user._id) {
-            res.render("dashboard.ejs",{user,blogs,authenticated:false});
-          } else {
+            res.render("dashboard.ejs",{user,blogs,authenticated:true});
+          } else if(req.isAuthenticated()){
+            res.render("Profile.ejs",{user,blogs,authenticated:true});
+          }
+          else{
             res.render("Profile.ejs",{user,blogs,authenticated:false});
           }
         })

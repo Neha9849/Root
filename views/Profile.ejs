@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="../css/style.css">
-<%- include('partials/Navbar.ejs',{authenticated:true}) %>
+<%- include('partials/Navbar.ejs',{authenticated:authenticated}) %>
 <style>
     .profile{
         max-width:98vw;
@@ -121,8 +121,6 @@ console.log(date);
                
             <% }) %>
             </div>
-         
-           
         </div>
     </div>
 </div>
