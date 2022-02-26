@@ -8,45 +8,45 @@ const mongoose = require("mongoose");
 router.get("/write", (req, res) => {
   if (req.isAuthenticated()) {
     res.render("write.ejs", { authenticated: true });
-  }
-  else{
+  } else {
     res.redirect("/signup");
   }
 });
 
 //get all blogs
 router.get("/blogs", (req, res) => {
-    
-     Blog.find({},function(err, blogs){
-        if (req.isAuthenticated()) {
-            res.render("blogs.ejs", { authenticated: true,blogs });
-          }
-          else{
-            res.render("blogs.ejs", { authenticated:false,blogs: blogs });
-          }
-    })
+  const modifiedBlogs = [];
+  Blog.find().populate("author").then(blogs=>{
+    blogs.reverse();
+    if(req.isAuthenticated()){
+      res.render("blogs.ejs", {blogs,authenticated:true})
+    }
+    else{
+      res.render("blogs.ejs", {blogs,authenticated:false})
+    }
    
+  }).catch(err => {console.log(err)});
 });
 //post blog
-router.post('/write/post',async(req,res)=>{
-  const {title,desc,body} = req.body;
-  let blog={
+router.post("/write/post", async (req, res) => {
+  const { title, desc, body } = req.body;
+  let blog = {
     title,
-    shortDescription:desc,
+    shortDescription: desc,
     body,
-    author:req.user._id
-  }
-  Blog.create(blog,(err, blog)=>{
-    console.log('new blog created')
-  })
-  res.redirect('/blog/blogs');
-})
+    author: req.user._id,
+  };
+  Blog.create(blog, (err, blog) => {
+    console.log("new blog created");
+  });
+  res.redirect("/blog/blogs");
+});
 
 //get each blog
-router.get('/:id',(req,res)=>{
-  Blog.findById(req.params.id,(err,blog)=>{
-    res.render('blog.ejs',{blog:blog})
-  })
-})
+router.get("/:id", (req, res) => {
+  Blog.findById(req.params.id, (err, blog) => {
+    res.render("blog.ejs", { blog: blog });
+  });
+});
 
 module.exports = router;

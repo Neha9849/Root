@@ -1,0 +1,72 @@
+<link rel="stylesheet" href="../css/style.css">
+<%- include('partials/Navbar.ejs',{authenticated:true}) %>
+<style>
+    .profile{
+        max-width:98vw;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+    }
+    .profile .wrapper{
+            margin-top:100px;
+            width:900px;
+            max-width: 98vw;
+            background-color:#f3f4f6;
+            border-radius:10px;
+            min-height:700px;
+    }
+    .profile .profileContainer{
+        display:flex;
+      
+    }
+    .profile .img{
+        width:100px;
+        height:100px;
+        overflow:hidden;
+        border-radius:50%;
+        box-shadow: 0 0 0 5px #62629348;
+    }
+    .profile .img img{
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+    }
+    .profile .content{
+        display:flex;
+       justify-content:center;
+        flex-direction: column;
+    }
+    .profile .light{
+        padding:0 !important;
+        margin:0 !important;
+      color:rgb(117, 115, 115);
+    }
+    .profile .date{
+        color:#626293;
+    }
+</style>
+<% var date = user.createdAt;
+var month = ["January", "February", "March", "April", "May", "June",
+"July", "August", "September", "October", "November", "December"][date.getMonth()]
+var year = date.getFullYear();
+var Date= date.getDate();
+date= `${Date}th ${month} ${year}`;
+console.log(date);
+%>
+   
+<div class="profile">
+    <div class="wrapper mx-2">
+        <div class="profileContainer m-5">
+            <div class="img">
+                <img src="<%= user.image %>" alt="<%= user.fullName %>" referrerpolicy="no-referrer">
+            </div>
+            <div class="content mx-3">
+                <h5 class="heading ">Neha Deekonda</h5>
+                <p class="light">Joined on</p>
+                <p class="light date"><%= date %></p>
+            </div>
+           
+
+        </div>
+    </div>
+</div>

@@ -1,29 +1,94 @@
 <style>
-    .blogContainer{
+    .blogContainer {
         padding-top: 40px;
-        background-color:  #f3f4f6;
-        width:700px;
-        max-width:100vw;
-        
+        background-color: #f3f4f6;
+        width: 700px;
+        max-width: 100vw;
+
         border-radius: 10px;
        
+
     }
-    .blogContainer:hover{
+
+    .blogContainer:hover {
         box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     }
-    .blogTitle{
-      font-size:1.5rem;
-      text-transform:capitalize;
+
+    
+
+    a,
+    a:hover,
+    a:focus,
+    a:active {
+        text-decoration: none;
+        color: inherit;
     }
-    a, a:hover, a:focus, a:active {
-     text-decoration: none;
-     color: inherit;
- }
+
+    .blogContainer .profileContainer {
+        display: flex;
+        align-items: center;
+        padding: 10px 5px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.178);
+        font-family: 'Inter', sans-serif;
+    }
+    .blogContainer .profileContainer:hover{
+        background-color:#e8e8eb;
+    }
+    
+
+    .profileContainer .img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+        box-shadow: 0 0 0 2px #6262936c;
+    }
+
+    .profileContainer .img img {
+        object-fit: contain;
+        width: 40px;
+        height: 40px;
+
+    }
+    .profileContainer h5{
+        color:rgba(65, 62, 62, 0.699) !important;
+    }
+    .blogContainer .heading{
+
+ font-family: 'Inter', sans-serif;
+    }
 </style>
-<a href="/blog/<%= blog._id %>">
-    <div class="blogContainer my-4 p-2">
-            <b class="heading blogTitle font-monospace m-1"><%= blog.title %></b>
-            <p><%- blog.body %></p>
-      
-      </div>
-</a>
+
+<div class="blogContainer my-4 p-2">
+    <a href="/user/<%= blog.author._id %>">
+        <div class="profileContainer">
+            <div class="img">
+                <img src="<%= blog.author.image %>" alt="<%= blog.author.fullName %>">
+
+            </div>
+            <div class="profileInfo">
+                <h5 class="mx-2 my-0 heading ">
+                    <%= blog.author.fullName %>
+                </h5>
+                
+            </div>
+           
+
+        </div>
+    </a>
+    <a href="/blog/<%= blog._id %>">
+        <div class="content p-3">
+            <h5 class="heading blogTitle m-1">
+                <%= blog.title %>
+            </h5>
+
+            <p class="m-1">
+                <%= blog.shortDescription %>
+
+            </p>
+        </div>
+    </a>
+
+
+
+</div>
