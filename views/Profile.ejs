@@ -8,33 +8,44 @@
         justify-content: center;
     }
     .profile .wrapper{
-            margin-top:100px;
+            margin:100px 0;
             width:900px;
             max-width: 98vw;
             background-color:#f3f4f6;
             border-radius:10px;
             min-height:700px;
+            border:1px solid #dee2e6;
     }
-    .profile .profileContainer{
+    .profile .banner{
+        width:100%;
+        height:150px;
+        background-color:#6f6f93;
+        border-radius:10px 10px 0 0;
+
+    }
+    .profile .pprofileContainer{
         display:flex;
+        position:relative;
+        top:-40px;
       
     }
     .profile .img{
-        width:100px;
-        height:100px;
+        width:150px;
+        height:150px;
         overflow:hidden;
         border-radius:50%;
-        box-shadow: 0 0 0 5px #62629348;
+        box-shadow: 0 0 0 5px white;
     }
     .profile .img img{
-        width: 100px;
-        height: 100px;
+        width: 150px;
+        height: 150px;
         object-fit: cover;
     }
     .profile .content{
         display:flex;
-       justify-content:center;
+       justify-content:end;
         flex-direction: column;
+        padding-bottom: 20px;
     }
     .profile .light{
         padding:0 !important;
@@ -42,8 +53,32 @@
       color:rgb(117, 115, 115);
     }
     .profile .date{
-        color:#626293;
+        color:#6f6f93;
     }
+    .profile ul{
+        list-style: none;
+    }
+    .profile .blogs{
+        border:1px solid #dee2e6;
+        background-color:white;
+        display: flex;
+        flex-direction: column;
+       align-items: center;
+    }
+    .profile button{
+        border-radius: 5px 5px 0 0;
+        border:1px solid #dee2e6 !important;
+    }
+    .profile  .blogContainer {
+        padding-top: 40px;
+        background-color: #f3f4f6;
+        width: 700px;
+        max-width: 100vw;
+        border-radius: 10px;
+      
+
+    }
+    
 </style>
 <% var date = user.createdAt;
 var month = ["January", "February", "March", "April", "May", "June",
@@ -56,7 +91,10 @@ console.log(date);
    
 <div class="profile">
     <div class="wrapper mx-2">
-        <div class="profileContainer m-5">
+        <div class="banner">
+
+        </div>
+        <div class="pprofileContainer mx-5">
             <div class="img">
                 <img src="<%= user.image %>" alt="<%= user.fullName %>" referrerpolicy="no-referrer">
             </div>
@@ -65,8 +103,26 @@ console.log(date);
                 <p class="light">Joined on</p>
                 <p class="light date"><%= date %></p>
             </div>
+          
            
 
+        </div>
+        <div class="activity">
+            <button class=" secondary-Btn px-2 py-2">
+                Activity
+            </button>
+            <div class="blogs">
+             <% blogs.forEach((blog)=>{ 
+                blog.author=user %>
+                <div class="eachBlog p-1">
+                    <%- include('partials/Blog.ejs',{blog:blog}) %>
+                    </div>
+               
+               
+            <% }) %>
+            </div>
+         
+           
         </div>
     </div>
 </div>
