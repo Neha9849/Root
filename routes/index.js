@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const {ensureAuth}= require("../middleware");
+const Blog = require('../models/blog')
 //login page
 router.get('/',(req,res) => {
     if(req.isAuthenticated()){
@@ -22,9 +23,16 @@ router.get('/signup',(req,res) => {
 
 //get dashboard
 router.get('/dashboard',ensureAuth,(req,res) => {
-    res.render('dashboard',{
-       user:req.user
-    })
+    Blog.find({author:req.user.id}).then((blogs)=>{
+        res.render('dashboard',{
+            user:req.user,
+            authenticated:true,
+            blogs:blogs
+         })
+    }).catch((err) => {console.log(err)})
+    
+   
+   
 })
 
 

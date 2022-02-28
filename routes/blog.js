@@ -78,7 +78,6 @@ router.get('/edit/:id', (req, res) => {
 // post edited blog 
 router.post('/edit/:id',(req,res)=>{
   const { title, desc, body } = req.body;
-  console.log(title);
   Blog.findById(req.params.id)
   .then((blog) => {
     if (req.user.id == blog.author._id) {

@@ -11,7 +11,6 @@ router.get("/:id", (req, res) => {
     .then((user) => {
       Blog.find({ author: id })
         .then((blogs) => {
-          console.log(blogs.length);
           if (id == req.user._id) {
             res.render("dashboard.ejs",{user,blogs,authenticated:true});
           } else if(req.isAuthenticated()){

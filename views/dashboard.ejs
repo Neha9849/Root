@@ -1,13 +1,162 @@
-<%- include('partials/Navbar.ejs',{authenticated:true}) %>
+<%- include('partials/Navbar.ejs',{authenticated:authenticated}) %>
 
 
-<div class="wrapper">
-    <a href="/auth/logout">
-        <button class="w-100 h-100">Logout</button>
-    </a>
-  
+
+<link rel="stylesheet" href="css/style.css">
+<style>
+    .profile{
+        max-width:98vw;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+    }
+    .profile .wrapper{
+            margin:100px 0;
+            width:900px;
+            max-width: 98vw;
+            background-color:#f3f4f6;
+            border-radius:10px;
+            min-height:700px;
+            border:1px solid #dee2e6;
+    }
+    .profile .banner{
+        width:100%;
+        height:150px;
+        background-color:#6f6f93;
+        border-radius:10px 10px 0 0;
+
+    }
+    .profile .pprofileContainer{
+        display:flex;
+        position:relative;
+        top:-40px;
+        flex-wrap: wrap;
+      
+    }
+    .profile .img{
+        width:150px;
+        height:150px;
+        overflow:hidden;
+        border-radius:50%;
+        box-shadow: 0 0 0 5px white;
+    }
+    .profile .img img{
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+    }
+    .profile .content{
+        display:flex;
+       justify-content:end;
+        flex-direction: column;
+        padding-bottom: 20px;
+    }
+    .profile .light{
+        padding:0 !important;
+        margin:0 !important;
+      color:rgb(117, 115, 115);
+    }
+    .profile .date{
+        color:#6f6f93;
+    }
+    .profile ul{
+        list-style: none;
+    }
+    .profile .blogs{
+        border:1px solid #dee2e6;
+        background-color:white;
+        display: flex;
+        flex-direction: column;
+       align-items: center;
+    }
+    .profile .activity button{
+        border-radius: 5px 5px 0 0;
+        border:1px solid #dee2e6 !important;
+    }
+    .profile  .blogContainer {
+        padding-top: 40px;
+        background-color: #f3f4f6;
+        width: 700px;
+        max-width: 100vw;
+        border-radius: 10px;
+      
+
+    }
+    .profile .logoutBtn{
+        position: absolute;
+        top:40px;
+        right:0;
+       
+    }
+    .mainProfileImg{
+        min-width: 150px;
+    }
+    @media screen and (max-width: 550px) {
+           .profile .mainProfileImg{
+              margin:0 auto;
+           }
+           .profile .content{
+               width: 100vw;
+              
+               text-align: center;
+           }
+           .profile .logoutBtn{
+               position: static;
+
+           }
+        }
+    
+</style>
+<% var date = user.createdAt;
+var month = ["January", "February", "March", "April", "May", "June",
+"July", "August", "September", "October", "November", "December"][date.getMonth()]
+var year = date.getFullYear();
+var Date= date.getDate();
+date= `${Date}th ${month} ${year}`;
+console.log(date);
+%>
+   
+<div class="profile">
+    <div class="wrapper mx-3">
+        <div class="banner">
+
+        </div>
+        <div class="pprofileContainer mx-5">
+            <div class="img mainProfileImg">
+                <img src="<%= user.image %>" alt="<%= user.fullName %>" referrerpolicy="no-referrer">
+            </div>
+            <div class="content mx-3">
+                <h5 class="heading ">Neha Deekonda</h5>
+                <p class="light">Joined on</p>
+                <p class="light date"><%= date %></p>
+                <a href="">
+                    <button class="px-3 py-2 main-Btn logoutBtn">Logout</button>
+                </a>
+            </div>
+           
+            
+           
+
+        </div>
+        <!-- /auth/logout -->
+        
+        <div class="activity">
+            <button class=" secondary-Btn px-2 py-2">
+                Activity
+            </button>
+            <div class="blogs">
+             <% blogs.forEach((blog)=>{ 
+                blog.author=user %>
+                <div class="eachBlog p-1">
+                    <%- include('partials/Blog.ejs',{blog:blog,user:blog.author._id}) %>
+                    </div>
+               
+               
+            <% }) %>
+            </div>
+        </div>
+    </div>
 </div>
-
 
 
 <!-- auth/logout -->
