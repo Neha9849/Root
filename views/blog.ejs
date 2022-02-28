@@ -6,13 +6,20 @@
             min-height: 100vh;
             display: flex;
             justify-content: center;
+
         }
 
         .singleBlog .wrapper {
+            background-color: white;
+            border-radius: 10px;
             width: 900px;
             max-width: 98vw;
             /* background-color: #4d70b8; */
-            margin-top: 100px;
+            margin: 100px 0;
+        }
+
+        .wrapper .blogTitle {
+            font-size: 45px !important;
         }
 
 
@@ -23,6 +30,7 @@
             padding: 10px 5px;
             font-family: 'Inter', sans-serif;
         }
+
         .singleBlog .profileContainer .img {
             width: 40px;
             height: 40px;
@@ -42,64 +50,109 @@
             color: rgba(65, 62, 62, 0.699) !important;
             text-decoration: none !important;
         }
-        .singleBlog .heading{
+
+        .singleBlog .heading {
             font-family: 'Inter', sans-serif !important;
-            color:#3c3c4e;
-           
+            color: #3c3c4e;
+
         }
-        .singleBlog .body h1,h2,h3,h4,h5,h6{
-            font-family:'Inter', sans-serif;
-            color:#3c3c4e;
+
+        .singleBlog .body h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Inter', sans-serif;
+            color: #3c3c4e;
         }
-        
-        .body img{
-            max-width:900px !important;
-            width:98% !important;
+
+        .body {
+            font-size: 1.125rem;
+            line-height: 1.7777778;
+            overflow-wrap: break-word
         }
-        .body a{
-            color:#5f5f7e;
+
+        .body img {
+            max-width: 900px !important;
+            width: 98% !important;
         }
-        .body a:hover{
-        color:#3c3c4e;
+
+        .body a {
+            color: #6f6f93;
         }
-        .date {  }
-        .body blockquote { border-left: 5px solid #d0d0d0; 
-        padding-left:10px; }
+
+        .body a:hover {
+            color: #3c3c4e;
+        }
+
+
+
+        .body blockquote {
+            border-left: 5px solid #d0d0d0;
+            padding-left: 10px;
+            font-style: italic;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2
+        }
+
+        th {
+            background-color: #6f6f93;
+            color: white;
+        }
     </style>
-    <% var date = blog.createdAt;
-    var month = ["January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"][date.getMonth()]
-    var year = date.getFullYear();
-    var Date= date.getDate();
-    date= `${Date}th ${month} ${year}`;
-    %>
+<% var date = blog.createdAt;
+var month = ["January", "February", "March", "April", "May", "June",
+"July", "August", "September", "October", "November", "December"][date.getMonth()]
+var year = date.getFullYear();
+var Date= date.getDate();
+date= `${Date}th ${month} ${year}`;
+%>
     <div class="singleBlog">
-        <div class="wrapper">
-           
-                <div class="profileContainer">
-                    <a href="/user/<%= blog.author._id %>">
+        <div class="wrapper p-3">
+
+            <div class="profileContainer">
+                <a href="/user/<%= blog.author._id %>">
                     <div class="img">
-                        <img src="<%= blog.author.image %>" alt="<%= blog.author.fullName %>" referrerpolicy="no-referrer"/>
+                        <img src="<%= blog.author.image %>" alt="<%= blog.author.fullName %>"
+                            referrerpolicy="no-referrer" />
 
                     </div>
                 </a>
-                    <div class="profileInfo">
-                        <h5 class="mx-2 my-0 heading ">
-                            <%= blog.author.fullName %>
-                        </h5>
-                     
-                      
-                    </div>
+                <div class="profileInfo">
+                    <h5 class="mx-2 my-0 heading ">
+                        <%= blog.author.fullName %>
+                    </h5>
+
+
                 </div>
-            
+            </div>
+
             <p class="date text-secondary mx-2">
-                <%= date %> </p>
-            <h1 class="heading my-3 mx-2 blogTitle"><%= blog.title %></h1>
-            <h3 class=" text-secondary mx-2 my-1"><%= blog.shortDescription %></h3>
+                <%= date %>
+            </p>
+            <h1 class="heading my-3 mx-2 blogTitle">
+                <%= blog.title %>
+            </h1>
+            <h3 class=" text-secondary mx-2 my-1">
+                <%= blog.shortDescription %>
+            </h3>
             <div class="body mx-2">
                 <%- blog.body %>
             </div>
-         
+
         </div>
     </div>
-    

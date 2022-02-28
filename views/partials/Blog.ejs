@@ -64,6 +64,7 @@
     }
     .blogContainer .icons  i{
        font-size:18px;
+       cursor: pointer;
     }
 </style>
 <% var date = blog.createdAt;
@@ -89,9 +90,13 @@ date= `${Date}th ${month} ${year}`;
                     <a href="/blog/edit/<%= blog._id %>">
                         <i class="fa-solid fa-pen-to-square mx-2 primaryColor"></i> 
                     </a>
-                    <a href="/blog/delete/<%= blog._id %>">
-                        <i class="fa-solid fa-trash mx-2 primaryColor"></i>
-                    </a>
+                  
+                        <i class="fa-solid fa-trash mx-2 primaryColor"
+                        onClick='showAlert("<%=blog._id %>")'
+                        ></i>
+                  
+                       
+                    
                         
                          
                     <% } %>
@@ -120,3 +125,15 @@ date= `${Date}th ${month} ${year}`;
 
 
 </div>
+<script>
+function showAlert(id){
+     let text= "Do you want to Delete?"
+     if(confirm(text)==true){
+        fetch(`/blog/delete/${id}`,{method:'DELETE'})
+    .then(() =>{console.log('blog deleted');
+    window.location.reload(1);
+});
+     }
+
+}
+</script>

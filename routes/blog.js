@@ -90,12 +90,17 @@ router.post('/edit/:id',(req,res)=>{
     } 
   })
   .catch((err) => console.log(err));
-  // if(req.user.id==blog.author._id){
-  //   Blog.findOneAndUpdate({id:req.params.id},{title,desc,body}).then(()=>{
-  //     console.log('posted');
-  //   }
-  //   ).catch(err=>console.log(err));
-  // }
 
+})
+
+//delete blog
+router.delete('/delete/:id',(req,res)=>{
+  Blog.findByIdAndDelete(req.params.id,(err,blog)=>{
+    if(err){ console.log(err)}
+    else{
+      console.log('deleted');
+    }
+  })
+  res.send('deleted');
 })
 module.exports = router;

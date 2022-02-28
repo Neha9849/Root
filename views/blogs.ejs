@@ -1,8 +1,7 @@
 <link rel="stylesheet" href="../css/style.css">
 <style>
-
     .blogs .Nullwrapper {
-       
+
         width: 100vw;
         min-height: 100vh;
         display: flex;
@@ -11,13 +10,13 @@
         flex-direction: column;
 
     }
-    .blogs .Blogswrapper{
-        padding-top:100px;
-        width:98vw;
+
+    .blogs .Blogswrapper {
+        padding-top: 100px;
+        width: 98vw;
         display: flex;
         justify-content: center;
     }
-  
 </style>
 <%- include('partials/Navbar.ejs',{authenticated:authenticated}) %>
     <div class="blogs">
@@ -28,22 +27,18 @@
                 <a href="/blog/write">
                     <button class="main-Btn px-3 py-2">Write one</button>
                 </a>
-               
-            </div>
-        <% } %>
-        <div class="Blogswrapper">
-            <div class="blogsBox">
-                <% blogs.forEach((blog)=>{%>
-                    <%- include('partials/Blog.ejs',{blog:blog,user:user}) %>
-                 <% }) %>
-            </div>
-            
-        </div>
-      
-        
 
-        
-       
+            </div>
+            <% } %>
+                <div class="Blogswrapper">
+                    <div class="blogsBox">
+                        <% blogs.forEach((blog)=>{%>
+                            <%- include('partials/Blog.ejs',{blog:blog,user:user}) %>
+                                <% }) %>
+                    </div>
+
+                </div>
+               
+    </div>
 
     
-    </div>
