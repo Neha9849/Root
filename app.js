@@ -18,7 +18,7 @@ const PORT = process.env.PORT || 5000;
 //middlewares
 // app.use(morgan('dev')) //logs middlewares
 app.use(express.json());
-app.use(express.urlencoded({ extented: true }));
+app.use(express.urlencoded({ extented:false }));
 app.use(expressLayouts);
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "public")));

@@ -2,7 +2,7 @@
 <%- include('partials/Navbar.ejs',{authenticated:authenticated}) %>
     <style>
         .singleBlog {
-            width: 100vw;
+            width: vw;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -43,15 +43,28 @@
             text-decoration: none !important;
         }
         .singleBlog .heading{
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', sans-serif !important;
+            color:#3c3c4e;
+           
         }
-        /* figure{
-            width:1000px !important;
-        } */
-        figure img{
+        .singleBlog .body h1,h2,h3,h4,h5,h6{
+            font-family:'Inter', sans-serif;
+            color:#3c3c4e;
+        }
+        
+        .body img{
             max-width:900px !important;
-            width:100%;
+            width:98% !important;
         }
+        .body a{
+            color:#5f5f7e;
+        }
+        .body a:hover{
+        color:#3c3c4e;
+        }
+        .date {  }
+        .body blockquote { border-left: 5px solid #d0d0d0; 
+        padding-left:10px; }
     </style>
     <% var date = blog.createdAt;
     var month = ["January", "February", "March", "April", "May", "June",
@@ -66,7 +79,7 @@
                 <div class="profileContainer">
                     <a href="/user/<%= blog.author._id %>">
                     <div class="img">
-                        <img src="<%= blog.author.image %>" alt="<%= blog.author.fullName %>">
+                        <img src="<%= blog.author.image %>" alt="<%= blog.author.fullName %>" referrerpolicy="no-referrer"/>
 
                     </div>
                 </a>
@@ -74,17 +87,19 @@
                         <h5 class="mx-2 my-0 heading ">
                             <%= blog.author.fullName %>
                         </h5>
-                       
+                     
+                      
                     </div>
                 </div>
             
-            <p class="text-secondary mx-2">
+            <p class="date text-secondary mx-2">
                 <%= date %> </p>
-            <h1 class="text-dark mx-2"><%= blog.title %></h1>
-            <h3 class=" text-secondary mx-2"><%= blog.shortDescription %></h3>
+            <h1 class="heading my-3 mx-2 blogTitle"><%= blog.title %></h1>
+            <h3 class=" text-secondary mx-2 my-1"><%= blog.shortDescription %></h3>
             <div class="body mx-2">
                 <%- blog.body %>
             </div>
          
         </div>
     </div>
+    

@@ -1,5 +1,5 @@
 <%- include('partials/Navbar.ejs',{authenticated:authenticated}) %>
-<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../../css/style.css">
     <style>
        .writeWrapper{
            width:100vw;
@@ -23,19 +23,19 @@
     </style>
     <div class="writeWrapper mt-5">
         <div class="write">
-            <form action="/blog/write" method="post" class="mx-1">
+            <form action="/blog/edit/<%= blog._id %>" method="post" class="mx-1">
                 <div class="form-group my-3">
                     <label for="title"><b class="heading">Title</b></label>
-                    <input type="text" id="title" class="form-control" name="title"  >
+                    <input type="text" id="title" class="form-control" name="title" value="<%= blog.title %> " >
                   </div>
                   <div class="form-group my-3">
                     <label for="desc"><b class="heading">Short Description</b></label>
-                    <input type="text" class="form-control" id="desc" name="desc" >
+                    <input type="text" class="form-control" id="desc" name="desc"value="<%= blog.shortDescription %>" >
                   </div>
                   <div class="form-group my-3 ">
                     <label for="editor"><b class="heading">Body</b></label>
                     <textarea  id="editor" rows="10" name="body" placeholder="Start typing here...
-                    (To upload images copy paste the image)"></textarea>
+                    (To upload images copy paste the image or drag and drop)" value="<%- blog.body %>"></textarea>
                   </div>
                   <button type="submit" class="main-Btn px-3 py-2">Submit</button>
             </form>

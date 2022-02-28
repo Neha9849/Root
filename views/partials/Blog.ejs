@@ -57,6 +57,14 @@
 
  font-family: 'Inter', sans-serif;
     }
+    .blogContainer .profileInfo{
+        width:100%;
+        display:flex;
+        justify-content:space-between;
+    }
+    .blogContainer .icons  i{
+       font-size:18px;
+    }
 </style>
 <% var date = blog.createdAt;
 var month = ["January", "February", "March", "April", "May", "June",
@@ -76,6 +84,19 @@ date= `${Date}th ${month} ${year}`;
                 <h5 class="mx-2 my-0 heading ">
                     <%= blog.author.fullName %>
                 </h5>
+                <div class="icons">
+                    <% if (blog.author._id==user){ %>
+                    <a href="/blog/edit/<%= blog._id %>">
+                        <i class="fa-solid fa-pen-to-square mx-2 primaryColor"></i> 
+                    </a>
+                    <a href="/blog/delete/<%= blog._id %>">
+                        <i class="fa-solid fa-trash mx-2 primaryColor"></i>
+                    </a>
+                        
+                         
+                    <% } %>
+                </div>
+               
                 
             </div>
            
@@ -92,7 +113,7 @@ date= `${Date}th ${month} ${year}`;
                 <%= blog.shortDescription %>
 
             </p>
-            <p class="text-secondary m-1">Created on <%= date %></p>
+            <p class="text-secondary m-1"><%= date %></p>
         </div>
     </a>
 
