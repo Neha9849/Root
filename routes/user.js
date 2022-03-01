@@ -11,14 +11,18 @@ router.get("/:id", (req, res) => {
     .then((user) => {
       Blog.find({ author: id })
         .then((blogs) => {
-          if (id == req.user._id) {
-            res.render("dashboard.ejs",{user,blogs,authenticated:true});
-          } else if(req.isAuthenticated()){
-            res.render("Profile.ejs",{user,blogs,authenticated:true});
-          }
-          else{
+          if(!req.isAuthenticated()){
             res.render("Profile.ejs",{user,blogs,authenticated:false});
           }
+          else{
+            if(id==req.user._id){
+              res.render("dashboard.ejs",{user,blogs,authenticated:true})
+            }
+            else{
+              res.render("Profile.ejs",{user,blogs,authenticated:true})
+            }
+          }
+          
         })
         .catch((err) => {
           console.log(err);

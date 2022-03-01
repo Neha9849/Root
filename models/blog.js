@@ -1,22 +1,25 @@
 const mongoose = require('mongoose');
 const BlogSchema = new mongoose.Schema({
     title:{
-        type:'string',
+        type:String,
         required:true,
         trim:true
     },
     shortDescription:{
-        type:'string',
+        type:String,
         required:true,
         trim:true
     },
     body:{
-        type:'string',
+        type:String,
         required:true,
     },
     author:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'user',
+    },
+    tags:{
+        type:[String]
     },
     createdAt:{
         type:Date,
