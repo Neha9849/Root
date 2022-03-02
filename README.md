@@ -12,7 +12,7 @@ View on [Demo](https://root-blogging-app.herokuapp.com/)
 - Users can edit their profile
 - Users can read blogs.
 ---
-## Built with-
+## Built with
 NodeJs    - Runtime env
 
 Express   - Backend Framework
@@ -43,4 +43,6 @@ CKEditor  - Editor for writing blogs
   ```
 5. Start the server
    ```npm start ```
-
+   
+6. If you have nodemon than use ```npm run dev``` to start live server.
+7. navigate to http://localhost:3000/
