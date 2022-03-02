@@ -113,6 +113,9 @@
             background-color: #6f6f93;
             color: white;
         }
+        #profileLink{
+            text-decoration: none;
+        }
     </style>
 <% var date = blog.createdAt;
 var month = ["January", "February", "March", "April", "May", "June",
@@ -123,15 +126,15 @@ date= `${Date} ${month} ${year}`;
 %>
     <div class="singleBlog">
         <div class="wrapper p-3">
-
+            <a href="/user/<%= blog.author._id %>" id="profileLink">
             <div class="profileContainer">
-                <a href="/user/<%= blog.author._id %>">
+              
                     <div class="img">
                         <img src="<%= blog.author.image %>" alt="<%= blog.author.fullName %>"
                             referrerpolicy="no-referrer" />
 
                     </div>
-                </a>
+               
                 <div class="profileInfo">
                     <h5 class="mx-2 my-0 heading ">
                         <%= blog.author.fullName %>
@@ -139,7 +142,9 @@ date= `${Date} ${month} ${year}`;
 
 
                 </div>
+           
             </div>
+        </a>
 
             <p class="date text-secondary mx-2">
                 <%= date %>
