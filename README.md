@@ -27,18 +27,19 @@ CKEditor  - Editor for writing blogs
 ## Local Setup 👩‍💻
 > Make sure to have Node and NPM installed
 1. Clone this repo
-   ``` git clone https://github.com/Neha9849/Auth_passport-local.git  ```
+   ``` git clone https://github.com/Neha9849/Root  ```
  2. Change directory
-  ``` cd Auth_passport-local ```
+  ``` cd Root ```
  3. Install the dependencies
   ``` npm i ```
   
- 4. Create config folder and add a file *keys.js* with 
-   following code-
+ 4. Create a .env file with following keys
   ```
-  module.exports ={
-    MongoURI: <your_key>,
-    }
+  PORT = 3000
+  MONGO_URI = <mongodb key>
+  GOOGLE_CLIENT_ID=<your client id>
+  GOOGLE_CLIENT_SECRET=<your secret>
+
   ```
 5. Start the server
    ```npm start ```
