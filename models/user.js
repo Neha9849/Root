@@ -19,6 +19,22 @@ const UserSchema = new mongoose.Schema({
     image:{
         type: String
     },
+    githubLink:{
+        type: String,
+        default: ""
+    },
+    linkedinLink:{
+        type:String,
+        default: ""
+    },
+    discordId:{
+        type:String,
+        default: ""
+    },
+    About:{
+        type: String,
+        default: ""
+    },
     createdAt:{
         type:Date,
         default: Date.now()

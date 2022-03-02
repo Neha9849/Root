@@ -54,11 +54,19 @@
                         <button class="main-Btn px-3 py-2"> <b>Get Started</b>
                         </button>
                     </a>
+                    <% if(authenticated){ %>
+                        <a href="/blog/blogs">
+                            <button class="main-Btn secondary-Btn px-3 py-2">
+                                <b>Read Blogs</b>
+                            </button>
+                        </a>
+                    <% }else{ %> 
                     <a href="/signup">
                         <button class="main-Btn secondary-Btn px-3 py-2">
-                            <b> Signin</b>
+                            <b> Sign up</b>
                         </button>
                     </a>
+                    <% } %>
                    
                
                 </div>

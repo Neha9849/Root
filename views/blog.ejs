@@ -119,7 +119,7 @@ var month = ["January", "February", "March", "April", "May", "June",
 "July", "August", "September", "October", "November", "December"][date.getMonth()]
 var year = date.getFullYear();
 var Date= date.getDate();
-date= `${Date}th ${month} ${year}`;
+date= `${Date} ${month} ${year}`;
 %>
     <div class="singleBlog">
         <div class="wrapper p-3">
@@ -144,10 +144,10 @@ date= `${Date}th ${month} ${year}`;
             <p class="date text-secondary mx-2">
                 <%= date %>
             </p>
-            <h1 class="heading my-3 mx-2 blogTitle">
+            <h1 class="heading mt-5 mb-4 mx-2 blogTitle">
                 <%= blog.title %>
             </h1>
-            <h3 class=" text-secondary mx-2 my-1">
+            <h3 class=" text-secondary mx-2 my-3">
                 <%= blog.shortDescription %>
             </h3>
             <div class="body mx-2">

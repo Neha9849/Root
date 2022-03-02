@@ -72,13 +72,13 @@ var month = ["January", "February", "March", "April", "May", "June",
 "July", "August", "September", "October", "November", "December"][date.getMonth()]
 var year = date.getFullYear();
 var Date= date.getDate();
-date= `${Date}th ${month} ${year}`;
+date= `${Date} ${month} ${year}`;
 %>
 <div class="blogContainer my-4 p-2">
     <a href="/user/<%= blog.author._id %>">
         <div class="profileContainer">
             <div class="img">
-                <img src="<%= blog.author.image %>" alt="<%= blog.author.fullName %>">
+                <img src="<%= blog.author.image %>" alt="<%= blog.author.fullName%>" referrerpolicy="no-referrer">
 
             </div>
             <div class="profileInfo">
