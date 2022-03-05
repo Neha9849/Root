@@ -6,11 +6,13 @@ View on [Demo](https://root-blogging-app.herokuapp.com/)
 
 ---
 ## What is this Application?
-- Root is a blogging Application.
+
+ Root is a blogging Application where
 - Users can sign in using google oauth.
-- Users can create, edit and delete blogs
-- Users can edit their profile
-- Users can read blogs.
+- Users can create, read, update and delete blogs.
+- Users has a dashboard where his/her activity and details will be Shown.
+- Users can edit their Profile Details.
+- Users can view others Profiles.
 ---
 ## Built with
 NodeJs    - Runtime env
