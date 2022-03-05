@@ -38,7 +38,7 @@ CKEditor  - Editor for writing blogs
  4. Create a .env file with following keys
   ```
   PORT = 3000
-  MONGO_URI = <mongodb key>
+  MONGO_URI = <your mongodb key>
   GOOGLE_CLIENT_ID=<your client id>
   GOOGLE_CLIENT_SECRET=<your secret>
 
