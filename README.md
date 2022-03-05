@@ -54,7 +54,7 @@ That's it! You are done with the setup 🎉
 
 ![SoSweetGIF](https://user-images.githubusercontent.com/85057583/156879523-7c9b9491-27c3-4ea0-809b-f9106c0b05f4.gif)
 
-### Contributers are Most Welcome 😇
+### Contributor's are Most Welcome 😇
 
 
 
