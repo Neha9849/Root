@@ -1,11 +1,11 @@
-# Root
+# Root 🚀
 ---
-## Demo
+## Demo 
 
 View on [Demo](https://root-blogging-app.herokuapp.com/)
 
 ---
-## What is this Application?
+## What is this Application? 👀
 
  Root is a blogging Application where
 - Users can sign in using google oauth.
@@ -14,7 +14,7 @@ View on [Demo](https://root-blogging-app.herokuapp.com/)
 - Users can edit their Profile Details.
 - Users can view others Profiles.
 ---
-## Built with
+## Built with 📜
 NodeJs    - Runtime env
 
 Express   - Backend Framework
@@ -48,3 +48,14 @@ CKEditor  - Editor for writing blogs
    
 6. If you have nodemon than use ```npm run dev``` to start live server.
 7. navigate to http://localhost:3000/
+
+
+That's it! You are done with the setup 🎉
+
+![SoSweetGIF](https://user-images.githubusercontent.com/85057583/156879523-7c9b9491-27c3-4ea0-809b-f9106c0b05f4.gif)
+
+### Contributers are Most Welcome 😇
+
+
+
+
